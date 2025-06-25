@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Munaf Ahmed - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS for base styles, animations, and specific elements */
+        body {
+            font-family: 'Inter', sans-serif; /* Apply Inter font to the entire body */
+            background-color: #1a1a2e; /* Deep dark blue background */
+            color: #e0e0e0; /* Light gray text for contrast */
+            line-height: 1.6; /* Improved readability for body text */
+        }
+
+        /* Styling for section headings with an accent underline */
+        .section-heading {
+            position: relative; /* Needed for positioning the pseudo-element */
+            display: inline-block; /* Allows the underline to only span the text width */
+            margin-bottom: 1.5rem; /* Space below the heading */
+            font-size: 2.25rem; /* text-4xl equivalent */
+            font-weight: 700; /* font-bold equivalent */
+            color: #e0e0e0; /* Heading text color */
+        }
+
+        /* Pseudo-element for the accent underline under headings */
+        .section-heading::after {
+            content: ''; /* Required for pseudo-elements */
+            position: absolute; /* Position relative to the parent .section-heading */
+            left: 0; /* Align to the left of the heading */
+            bottom: -8px; /* Position slightly below the text */
+            width: 60%; /* Width of the underline */
+            height: 4px; /* Thickness of the underline */
+            background-color: #6a0572; /* Vibrant purple accent color */
+            border-radius: 9999px; /* Fully rounded corners for the underline */
+        }
+
+        /* Styling for content cards (skills, projects) */
+        .card {
+            background-color: #2a2a4a; /* Slightly lighter dark blue for card backgrounds */
+            border-radius: 1rem; /* rounded-xl equivalent */
+            padding: 1.5rem; /* Internal padding */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg equivalent */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
+        }
+
+        /* Hover effect for cards: slight lift and increased shadow */
+        .card:hover {
+            transform: translateY(-5px); /* Lift the card slightly */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+        }
+
+        /* Styling for primary call-to-action buttons */
+        .btn-primary {
+            background-color: #6a0572; /* Accent color for buttons */
+            color: white; /* White text on buttons */
+            padding: 0.75rem 1.5rem; /* Vertical and horizontal padding */
+            border-radius: 0.75rem; /* rounded-lg equivalent */
+            font-weight: 600; /* Semi-bold text */
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transform and box-shadow for button hover */
+        }
+
+        /* Hover effect for primary buttons: darker accent */
+        .btn-primary:hover {
+            background-color: #8c0792; /* Darker purple on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 5px 15px rgba(106, 5, 114, 0.4); /* Purple shadow on hover */
+        }
+
+        /* Styling for social media icons */
+        .social-icon {
+            color: #e0e0e0; /* Light gray color for icons */
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transitions for color and transform */
+        }
+
+        /* Hover effect for social icons: accent color and slight lift */
+        .social-icon:hover {
+            color: #6a0572; /* Accent color on hover */
+            transform: translateY(-5px) scale(1.1); /* More pronounced lift and slight scale */
+        }
+
+        /* Keyframe animations for initial header load */
+        @keyframes headerFadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes headerScaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Classes for header animation */
+        .header-animate-text {
+            animation: headerFadeInUp 1s ease-out forwards;
+            opacity: 0; /* Start invisible */
+        }
+        .header-animate-button {
+            animation: headerScaleIn 1s ease-out 0.5s forwards; /* Starts after text */
+            opacity: 0; /* Start invisible */
+        }
+
+        /* Scroll Reveal Animation (elements animate as they come into view) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px); /* Start slightly below */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+        }
+        .scroll-reveal.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-gradient-to-r from-[#1a1a2e] to-[#2a2a4a] text-white py-20 text-center shadow-xl">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight header-animate-text">Syed Munaf Ahmed</h1>
+            <p class="text-xl md:text-2xl font-light text-purple-200 header-animate-text" style="animation-delay: 0.2s;">Flutter Developer | BSCS Student</p>
+            <div class="mt-8 header-animate-button" style="animation-delay: 0.7s;">
+                <a href="#contact" class="btn-primary inline-block text-lg md:text-xl">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-16 md:py-24 container mx-auto px-4 max-w-4xl">
+        <h2 class="section-heading scroll-reveal">About Me</h2>
+        <p class="text-lg leading-relaxed mt-6 scroll-reveal" style="transition-delay: 0.1s;">
+            I am a passionate third-year <span class="font-semibold text-purple-300">BSCS student</span> at Hamdard University,
+            on track to graduate in <span class="font-semibold text-purple-300">2026</span>. My journey in software development
+            has led me to specialize in <span class="font-semibold text-purple-300">Flutter</span>, where I enjoy bringing
+            beautiful and functional mobile applications to life.
+        </p>
+        <p class="text-lg leading-relaxed mt-4 scroll-reveal" style="transition-delay: 0.2s;">
+            I thrive on building intuitive user interfaces and robust back-end integrations.
+            My goal is to contribute to innovative projects and continuously expand my expertise in mobile development.
+        </p>
+    </section>
+
+    <section id="skills" class="bg-[#2a2a4a] py-16 md:py-24">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="section-heading text-white scroll-reveal">My Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <div class="card scroll-reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-4">Flutter Development</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>UI Implementation</li>
+                        <li>State Management (Provider)</li>
+                        <li>Local Storage (SQFlite, SharedPreferences)</li>
+                        <li>REST API Integration & Data Display</li>
+                    </ul>
+                </div>
+                <div class="card scroll-reveal" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl font-semibold text-purple-300 mb-4">Key Strengths</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Clean and Responsive UI Design</li>
+                        <li>High-Fidelity UI Replication</li>
+                        <li>Real-time Data Handling</li>
+                        <li>Problem Solving & Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24 container mx-auto px-4 max-w-4xl">
+        <h2 class="section-heading scroll-reveal">Apps I've Developed</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+            <div class="card scroll-reveal" style="transition-delay: 0.1s;">
+                <h3 class="text-2xl font-semibold text-purple-300 mb-2">Targo UI</h3>
+                <p class="text-md text-gray-300 mb-4">A clean and responsive UI concept app, designed to showcase layout and styling techniques in Flutter. It simulates the front-end experience of a modern shopping or service app.</p>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Flutter UI</span>
+            </div>
+            <div class="card scroll-reveal" style="transition-delay: 0.2s;">
+                <h3 class="text-2xl font-semibold text-purple-300 mb-2">Easypaisa UI Clone</h3>
+                <p class="text-md text-gray-300 mb-4">A detailed replica of the Easypaisa app’s interface, created to practice high-fidelity UI design. It mimics the visual elements and layout structure of the original app.</p>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">UI Replication</span>
+            </div>
+            <div class="card scroll-reveal" style="transition-delay: 0.3s;">
+                <h3 class="text-2xl font-semibold text-purple-300 mb-2">WeLite</h3>
+                <p class="text-md text-gray-300 mb-4">WeLite is a weather app built with Flutter that allows users to search for any city and view its current weather conditions. It also provides real-time weather updates for the user’s current location using the device's GPS. The app delivers a clean, user-friendly interface with quick and accurate weather data.</p>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Weather App</span>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full ml-2">API Integration</span>
+            </div>
+            <div class="card scroll-reveal" style="transition-delay: 0.4s;">
+                <h3 class="text-2xl font-semibold text-purple-300 mb-2">Informer</h3>
+                <p class="text-md text-gray-300 mb-4">Informer is a news application that fetches and displays real-time news articles from a public API. It organizes news by categories and headlines, offering a smooth reading experience through a well-structured UI.</p>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">News App</span>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full ml-2">API Integration</span>
+            </div>
+            <!-- New Project: Order Management System -->
+            <div class="card scroll-reveal" style="transition-delay: 0.5s;">
+                <h3 class="text-2xl font-semibold text-purple-300 mb-2">Order Management System</h3>
+                <p class="text-md text-gray-300 mb-4">A robust order management system built with Flutter, designed to efficiently handle orders. It features state management using Provider and persistent data storage with SQFlite, ensuring a smooth and reliable user experience for managing product orders.</p>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Order Management</span>
+                <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full ml-2">State Management</span>
+<span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full ml-1 m-2">
+  Local Database (SQFlite)
+</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-[#2a2a4a] py-16 md:py-24">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="section-heading text-white mx-auto scroll-reveal">Connect With Me</h2>
+            <p class="text-lg mt-6 mb-8 scroll-reveal" style="transition-delay: 0.1s;">Feel free to reach out or connect on my social platforms!</p>
+            <div class="flex justify-center space-x-8 scroll-reveal" style="transition-delay: 0.2s;">
+                <a href="https://www.linkedin.com/in/syed-munaf-ahmed-229612253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon text-5xl">
+                    <i class="fab fa-linkedin"></i>
+                    <span class="sr-only">LinkedIn</span> </a>
+                <a href="https://github.com/Syedmunafahmed04" target="_blank" class="social-icon text-5xl">
+                    <i class="fab fa-github"></i>
+                    <span class="sr-only">GitHub</span>
+                </a>
+                <a href="mailto:munafahmed389@gmail.com" class="social-icon text-5xl">
+                    <i class="fas fa-envelope"></i>
+                    <span class="sr-only">Gmail</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1a1a2e] text-gray-400 py-8 text-center text-sm">
+        <div class="container mx-auto px-4 scroll-reveal">
+            <p>&copy; 2025 Syed Munaf Ahmed. All rights reserved.</p>
+            <p class="mt-2">Built with <span class="text-purple-500">&hearts;</span> and Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for scroll reveal animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of the element must be visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, observerOptions);
+
+            // Select all elements that should animate on scroll
+            document.querySelectorAll('.scroll-reveal').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
